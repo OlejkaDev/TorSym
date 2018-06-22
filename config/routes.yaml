@@ -1,0 +1,4 @@
+# config/routes.yaml
+index:
+    path: /
+    defaults: { _controller: 'App\Controller\DefaultController::homepage' }
