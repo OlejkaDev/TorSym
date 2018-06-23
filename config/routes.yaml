@@ -2,3 +2,11 @@
 index:
     path: /
     defaults: { _controller: 'App\Controller\DefaultController::homepage' }
+
+admin:
+    path: /admin/
+    defaults: { _controller: 'App\Admin\AdminController::adminpage' }
+
+torrents:
+    path: /torrents/
+    defaults: { _controller: 'App\Controller\TorrentsController::torrentsAction' }
