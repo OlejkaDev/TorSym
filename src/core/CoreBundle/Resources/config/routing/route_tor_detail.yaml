@@ -1,0 +1,4 @@
+torrent_detail:
+    path: /{id}
+    methods: [GET]
+    defaults: { _controller: 'App\TorrentBundle\Controller\TorrentController::index' }

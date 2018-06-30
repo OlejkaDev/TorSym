@@ -14,4 +14,6 @@ return [
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
+    App\CoreBundle\AppCoreBundle::class => ['all' => true],
+    App\TorrentBundle\AppTorrentBundle::class => ['all' => true]
 ];

@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Controller;
+namespace App\TorrentBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Debug\Debug;
 
-class TorrentsController extends Controller
+class TorrentController extends Controller
 {
 
-  public function torrentsAction() {
+  public function index($id) {
 
     return new Response('
         <html>
             <body>
-                <h1>Hello Torrents</h1>
+                <h1>Hello '.$id.'</h1>
             </body>
         </html>
     ');

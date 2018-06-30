@@ -1,0 +1,3 @@
+torrentspage:
+    path: /torrents
+    defaults: { _controller: 'App\CoreBundle\Controller\TorrentsController::index' }
