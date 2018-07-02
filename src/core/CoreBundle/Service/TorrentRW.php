@@ -67,8 +67,8 @@
  */
 
 namespace App\CoreBundle\Service;
- 
-class Torrent
+
+class TorrentRW
 {
     /**
      * @const float Default http timeout

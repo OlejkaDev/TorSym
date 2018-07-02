@@ -1,13 +1,37 @@
 security:
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+
     providers:
         in_memory: { memory: ~ }
+        pdadmin_auth:
+            entity:
+                class: App\UserBundle\Entity\User
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            pattern:    ^/
+            provider: pdadmin_auth
             anonymous: true
+            switch_user: true
+            http_basic: ~
+            form_login:
+                use_referer: true
+                login_path: security_login
+                check_path: security_login
+                #default_target_path: 'dashboard' # Login Redirect Path
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path: security_logout
+                #target: 'home' # Logout Redirect Path
+            remember_me:
+                secret:   '%env(APP_SECRET)%'
+                #lifetime: 604800
+                path:     /
+                name: symtor
 
             # activate different ways to authenticate
 
@@ -19,6 +43,13 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
+    encoders:
+        App\UserBundle\Entity\User:
+            algorithm: argon2i
+    role_hierarchy:
+        ROLE_ADMIN:       [ROLE_USER]
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/auth/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/auth/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/auth/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: '^/', role: ROLE_ADMIN }

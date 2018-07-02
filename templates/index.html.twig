@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-	{{ number }}
-	
-	<h1>Hello Symfony 4 World</h1>
-    </body>
-</html>
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ number }}
+
+<h1>Hello Symfony 4 World</h1>
+{% endblock %}

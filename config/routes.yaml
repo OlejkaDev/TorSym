@@ -1,6 +1,6 @@
 # config/routes.yaml     #defaults: { _controller: 'App\Controller\DefaultController::homepage' }
 #    resource: 'App\Resources\config\routing.yaml'
-#    
+#
 route_home:
     prefix: /
     resource: "@AppCoreBundle/Resources/config/route_home.yaml"
@@ -8,7 +8,11 @@ route_home:
 route_torrents:
     resource: "@AppCoreBundle/Resources/config/route_torrents.yaml"
     prefix: /
-    
+
 route_torrent:
     resource: "@AppCoreBundle/Resources/config/routing/route_tor_detail.yaml"
     prefix: /torrent
+
+route_user:
+    resource: "@AppCoreBundle/Resources/config/routing/route_user.yaml"
+    prefix: /user

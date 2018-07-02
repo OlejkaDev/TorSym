@@ -27,3 +27,4 @@ doctrine:
                 dir: '%kernel.project_dir%/src/core/CoreBundle/Entity'
                 prefix: 'App\CoreBundle\Entity'
                 alias: App
+        

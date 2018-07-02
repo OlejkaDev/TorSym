@@ -1,0 +1,31 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # Command
+    app_user.command.create:
+        class: App\UserBundle\Command\CreateUserCommand
+        arguments: ['@doctrine.orm.entity_manager', '@service_container', '%app_user.user_class%', '%app_user.profile_class%']
+    app_user.command.changepw:
+        class: App\UserBundle\Command\ChangePasswordCommand
+        arguments: ['@doctrine.orm.entity_manager', '@service_container', '%app_user.user_class%']
+    app_user.command.role:
+        class: App\UserBundle\Command\RoleUserCommand
+        arguments: ['@doctrine.orm.entity_manager', '@service_container', '%app_user.user_class%']
+
+    # Login Listener to Change Language
+    app.user_login:
+        class: App\UserBundle\Listener\LoginListener
+        tags:
+            - { name: kernel.event_subscriber }
+
+    # Locale Listener
+    app\UserBundle\Listener\LocaleListener:
+        tags:
+            { name: kernel.event_subscriber }
+
+    # Load Voters
+    app.voter_super_admin:
+        class: App\UserBundle\Security\SuperAdminVoter

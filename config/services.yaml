@@ -11,13 +11,20 @@ services:
         public: false       # Allows optimizing the container by removing unused services; this also means
                             # fetching services directly from the container via $container->get() won't work.
                             # The best practice is to be explicit about your dependencies anyway.
-
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/core/*'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
-        
+
     torrent:
-        class: 'App\CoreBundle\Service\Torrent'
+        class: 'App\CoreBundle\Service\TorrentRW'
         public: true
+
+    App\UserBundle\Command\ChangePasswordCommand:
+        $userClass: ''
+    App\UserBundle\Command\CreateUserCommand:
+        $userClass: ''
+        $profileClass: ''
+    App\UserBundle\Command\RoleUserCommand:
+        $userClass: ''

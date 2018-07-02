@@ -1,0 +1,14 @@
+app_user:
+    user_class: App\UserBundle\Entity\User
+    profile_class: App\UserBundle\Entity\Profile
+    group_class: App\UserBundle\Entity\Group
+    default_group: ''
+    login_redirect: 'homepage'
+    email_confirmation: false
+    welcome_email: true
+    user_registration: true
+    #template_path: '@Admin/Auth'
+    resetting_request_time: 7200
+    mail_sender_address: 'example@example.com'
+    mail_sender_name: 'pdUser'
+    active_language: ['en', 'tr']
